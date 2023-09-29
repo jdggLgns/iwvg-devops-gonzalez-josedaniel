@@ -67,4 +67,17 @@ class UserTest {
         User user = new User("1", "Dani", "Gonzalez", Arrays.asList(new Fraction(1, 2), new Fraction(3, 4)));
         assertEquals("User{id='1', name='Dani', familyName='Gonzalez', fractions=[Fraction{numerator=1, denominator=2}, Fraction{numerator=3, denominator=4}]}", user.toString());
     }
+    @Test
+    void testFullName() {
+        User user = new User("1", "Dani", "Gonzalez", null);
+        assertEquals("John Doe", user.fullName());
+    }
+
+    @Test
+    void testSetFractions() {
+        User user = new User("1", "Dani", "Gonzalez", new ArrayList<>());
+        List<Fraction> fractions = Arrays.asList(new Fraction(1, 2), new Fraction(3, 4));
+        user.setFractions(fractions);
+        assertEquals(fractions, user.getFractions());
+    }
 }

@@ -1,7 +1,5 @@
 package es.upm.miw.iwvg_devops.code;
 
-import es.upm.miw.iwvg_devops.code.Fraction;
-
 import java.util.ArrayList;
 import java.util.List;
 

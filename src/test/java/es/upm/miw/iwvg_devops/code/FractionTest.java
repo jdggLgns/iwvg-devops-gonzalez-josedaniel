@@ -99,4 +99,11 @@ class FractionTest {
         assertEquals(4, quotient.getNumerator());
         assertEquals(6, quotient.getDenominator());
     }
+
+    @Test
+    void testFindFirstDecimalFractionByUserName() {
+        UsersDatabase usersDatabase = new UsersDatabase();
+        Double result = Fraction.findFirstDecimalFractionByUserName("Dani", usersDatabase);
+        assertNull(result);
+    }
 }
