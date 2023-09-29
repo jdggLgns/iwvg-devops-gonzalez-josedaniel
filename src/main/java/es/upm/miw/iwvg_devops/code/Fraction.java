@@ -112,4 +112,22 @@ public class Fraction {
         return null;
     }
 
+    public static Fraction findHighestFraction(List<Fraction> fractions) {
+        if (fractions == null || fractions.isEmpty()) {
+            throw new IllegalArgumentException("The list of fractions cannot be empty");
+        }
+
+        Fraction highestFraction = fractions.get(0);
+        double highestDecimal = highestFraction.decimal();
+
+        for (Fraction fraction : fractions) {
+            double currentDecimal = fraction.decimal();
+            if (currentDecimal > highestDecimal) {
+                highestDecimal = currentDecimal;
+                highestFraction = fraction;
+            }
+        }
+
+        return highestFraction;
+    }
 }

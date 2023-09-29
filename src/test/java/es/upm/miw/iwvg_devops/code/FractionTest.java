@@ -1,6 +1,9 @@
 package es.upm.miw.iwvg_devops.code;
 
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class FractionTest {
@@ -105,5 +108,20 @@ class FractionTest {
         UsersDatabase usersDatabase = new UsersDatabase();
         Double result = Fraction.findFirstDecimalFractionByUserName("Dani", usersDatabase);
         assertNull(result);
+    }
+
+    @Test
+    void testFindHighestFraction() {
+        List<Fraction> fractions = List.of(
+                new Fraction(1, 2),
+                new Fraction(3, 4),
+                new Fraction(1, 3),
+                new Fraction(5, 6)
+        );
+
+        Fraction highestFraction = Fraction.findHighestFraction(fractions);
+
+        assertEquals(5, highestFraction.getNumerator());
+        assertEquals(6, highestFraction.getDenominator());
     }
 }
