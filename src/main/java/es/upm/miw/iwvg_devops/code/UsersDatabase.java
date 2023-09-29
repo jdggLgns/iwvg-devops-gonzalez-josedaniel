@@ -1,6 +1,7 @@
 package es.upm.miw.iwvg_devops.code;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Stream;
 
 public class UsersDatabase {
@@ -57,5 +58,19 @@ public class UsersDatabase {
                 .filter(user -> user.getFractions().stream().anyMatch(fraction -> fraction.getNumerator() < 0 || fraction.getDenominator() < 0))
                 .map(User::getFamilyName)
                 .distinct();
+    }
+
+    public Fraction findFractionAdditionByUserId(String id) {
+        Optional<User> userOptional = findAll()
+                .filter(user -> user.getId().equals(id))
+                .findFirst();
+
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
+            return user.getFractions().stream()
+                    .reduce(new Fraction(), Fraction::add);
+        } else {
+            throw new IllegalArgumentException("User not found with ID: " + id);
+        }
     }
 }
