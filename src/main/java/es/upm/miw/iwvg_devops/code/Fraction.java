@@ -1,5 +1,8 @@
 package es.upm.miw.iwvg_devops.code;
 
+import java.util.List;
+import java.util.Optional;
+
 /**
  * Conceptos: Las fracciones propias son aquellas cuyo numerador es menor que el denominador
  * <p>
@@ -93,4 +96,20 @@ public class Fraction {
         int quotientDenominator = this.denominator * fraction.getNumerator();
         return new Fraction(quotientNumerator, quotientDenominator);
     }
+    public static Double findFirstDecimalFractionByUserName(String name, UsersDatabase usersDatabase) {
+        Optional<User> userOptional = usersDatabase.findAll()
+                .filter(user -> user.getName().equals(name))
+                .findFirst();
+
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
+            List<Fraction> fractions = user.getFractions();
+            if (!fractions.isEmpty()) {
+                Fraction firstFraction = fractions.get(0);
+                return firstFraction.decimal();
+            }
+        }
+        return null;
+    }
+
 }
