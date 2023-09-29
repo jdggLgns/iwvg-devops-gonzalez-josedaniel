@@ -48,5 +48,14 @@ public class UsersDatabase {
                 new User("5", "Antonio", "Blanco", fractions5),
                 new User("6", "Paula", "Torres", fractions6)
         );
+
+    }
+
+    public static Stream<String> findUserFamilyNameByAllNegativeSignFractionDistinct() {
+        UsersDatabase usersDatabase = new UsersDatabase();
+        return usersDatabase.findAll()
+                .filter(user -> user.getFractions().stream().anyMatch(fraction -> fraction.getNumerator() < 0 || fraction.getDenominator() < 0))
+                .map(User::getFamilyName)
+                .distinct();
     }
 }
