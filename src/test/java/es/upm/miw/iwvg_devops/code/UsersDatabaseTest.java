@@ -31,7 +31,6 @@ class UsersDatabaseTest {
         UsersDatabase usersDatabase = mock(UsersDatabase.class);
         when(usersDatabase.findFractionAdditionByUserId("1"))
                 .thenReturn(new Fraction(3, 4));
-
         Fraction result = usersDatabase.findFractionAdditionByUserId("1");
 
         assertEquals(3, result.getNumerator());
@@ -48,7 +47,6 @@ class UsersDatabaseTest {
         assertThrows(IllegalArgumentException.class, () -> {
             usersDatabase.findFractionAdditionByUserId("100");
         });
-
         verify(usersDatabase, times(1)).findFractionAdditionByUserId("100");
     }
 }

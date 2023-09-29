@@ -70,7 +70,7 @@ class UserTest {
     @Test
     void testFullName() {
         User user = new User("1", "Dani", "Gonzalez", null);
-        assertEquals("John Doe", user.fullName());
+        assertEquals("Dani Gonzalez", user.fullName());
     }
 
     @Test
