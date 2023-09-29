@@ -2,6 +2,7 @@ package es.upm.miw.iwvg_devops.code;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -101,6 +102,12 @@ class FractionTest {
         Fraction quotient = fraction1.divide(fraction2);
         assertEquals(4, quotient.getNumerator());
         assertEquals(6, quotient.getDenominator());
+    }
+
+    @Test
+    void testFindHighestFractionThrowsExceptionWhenEmptyList() {
+        List<Fraction> emptyFractions = new ArrayList<>();
+        assertThrows(IllegalArgumentException.class, () -> Fraction.findHighestFraction(emptyFractions));
     }
 
     @Test

@@ -72,5 +72,5 @@ public class UsersDatabase {
         } else {
             throw new IllegalArgumentException("User not found with ID: " + id);
         }
+        }
     }
-}
